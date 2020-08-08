@@ -1,17 +1,19 @@
 import numpy as np
 
-number = np.random.randint(1, 101)    # загадали число
-print("Загадано число от 1 до 100")
-a = 1  # настраиваем границы отрезка
-b = 101
-
 
 def game_score(number: int) -> int:
-    nums = range(a, b)
     '''Осуществляем поиск нужного числа'''
 
-    count = 0
-    mid = round(len(nums) / 2)  # поиск середины
+    # настраиваем границы отрезка
+    a = 1
+    b = 101
+    nums = range(a, b)
+    
+    # поиск середины
+    # для случая, когда nums[mid] == number, задаем count = 1
+    count = 1
+    mid = round(len(nums) / 2)
+
     while nums[mid] != number:
         # выбираем часть списка, в которой находится загаданное число
         if number > nums[mid]:
@@ -40,5 +42,5 @@ def score_game(game_core):
     return score
 
 
-print(f"Вы угадали число {number} за {game_score(number)} попыток.")
+#print(f"Вы угадали число {number} за {game_score(number)} попыток.")
 score_game(game_score)
